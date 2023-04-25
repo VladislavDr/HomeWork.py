@@ -12,5 +12,5 @@ if s % 6 != 0:
 else:
     sSergey = int(s // 6)
     sPetr = int(s // 6)
-    sKate = int(sSergey * sPetr)
+    sKate = int((sSergey + sPetr) * 2)
     print("Катя сделала " + str(sKate) + " журавиков, Петя сделал " + str(sPetr) + " журавликов и Сережа сделал " + str(sSergey) + " журавликов")
