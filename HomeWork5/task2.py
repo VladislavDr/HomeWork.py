@@ -9,10 +9,13 @@ def count_let(x):
     temp = []
     first_symbol = True
     for i in range(0, len(x)-1):
+        if first_symbol:
+            temp.append(x[i])
+
         if x[i] == x[i + 1]:
-            if first_symbol:
-                temp.append(x[i])
-                first_symbol = False
+            # if first_symbol:
+            #     # temp.append(x[i])
+            first_symbol = False
             count += 1
         else:
             if count != 1:

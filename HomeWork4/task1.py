@@ -4,7 +4,7 @@
 # второго множества. Затем пользователь вводит сами элементы множеств.
 
 n = int(input("Введите количество эллементов первого множества: "))
-m = int(input("Введите количество эллементов первого множества: "))
+m = int(input("Введите количество эллементов второго множества: "))
 
 listn1 = list()
 listn2 = list()
@@ -17,7 +17,7 @@ for i in range(0, m):
 unical_numbers1 = set(listn1)
 unical_numbers2 = set(listn2)
 
-unical_numb_full = unical_numbers1.union(unical_numbers2)
+unical_numb_full = unical_numbers1.intersection(unical_numbers2)
 
 result = sorted(unical_numb_full)
 print(result)
