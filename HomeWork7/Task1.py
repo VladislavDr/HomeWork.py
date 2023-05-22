@@ -9,11 +9,10 @@
 #     **Вывод:** Парам пам-пам  
 
 text = input("Введите текст, чтобы проверить его ритм: ").split()
-print(text)
+print(*text)
 
 # sample = "а", "о", "у", "е", "э", "ы", "я", "ю"
 sample = "аоуеэыяю"
-count = 0
 result = list()
 for i in text:
     count = 0
@@ -22,13 +21,11 @@ for i in text:
             count += 1
     result.append(count)
 
-result = list(map(int, result))
 rhythm = True
-for i in range(len(result)-1):
-    if result[i] == result[i+1]:
-        rhythm = True
-    else:
+for i in range(len(result) - 1):
+    if result[i] != result[i + 1]:
         rhythm = False
+        break
 
 if rhythm == True:
     print("Парам пам-пам") 

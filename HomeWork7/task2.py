@@ -20,6 +20,7 @@ num_columns = int(input("Введите количество столбцов: "
 def print_operation_table(operation, rows, columns):
     for i in range(1, rows + 1):
         for j in range(1, columns + 1):
-            print(*list(map(operation, [i], [j])), end="\t")
+            print((operation(i, j)), end="\t")
         print()
+
 print_operation_table(lambda x, y: x * y, num_rows, num_columns)
