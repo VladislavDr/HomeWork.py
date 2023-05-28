@@ -7,6 +7,7 @@
 # 4. Использование функций. Ваша программа не должна быть линейной
 
 import re
+import sys
 
 
 database_filename = "Database.txt"
@@ -34,39 +35,46 @@ def check_for_num(num):
 
 
 def output_data(file):
-    search_data = input("Введите имя или фамилию для поиска: ")
+    search_data = input("Введите имя или фамилию для поиска: \n")
     res = list()
     with open(database_filename, "r", encoding="utf-8") as file:
         text = file.readlines()
         for line in text:
             if search_data.lower() in line.lower():
-                    line = line.strip("\n")
-                    res.append(line)
+                    res.append(line.strip("\n"))
         if len(res) != 0:
-            print(f"Возможно, вы искали {res}")
-            print()
+            print(f"Возможно, вы искали {res}\n")
         else:
-            print("Такого человека не найдено")
-            print()
+            print("Такого человека не найдено\n")
 
 
 def mode_selection():
-    mode = int(input("Выберет режим, в котором хотите работать. \n  Введите 1, если хотите ввести данные в записную книжку." + 
-                " Введите 2, если хотите найти человека в записной книжке. \n Введите 0, если хотите выйти из прогграммы: "))
-    while mode > 2 or mode < 0:
-        print("Не верно, попробуй еще разок")
-        print()
+    while True:
         mode = int(input("Выберет режим, в котором хотите работать. \n  Введите 1, если хотите ввести данные в записную книжку." + 
-                " Введите 2, если хотите найти человека в записной книжке. Введите 0, если хотите выйти из прогграммы: "))
-    else:
-        if mode == 1:
-            input_data(database_filename)
-            mode_selection()
-        elif mode == 2:
-            output_data(database_filename)
-            mode_selection()
-        elif mode == 0:
-            print("До встречи!")
+                " Введите 2, если хотите найти человека в записной книжке. \n Введите 0, если хотите выйти из программы: "))
+        match mode:
+            case 1:
+                input_data(database_filename)
+            case 2:
+                output_data(database_filename)
+            case 0:
+                print("До встречи!")
+                sys.exit()
+            case _:
+                print("Не верно, попробуй еще разок \n")
+    # while mode > 2 or mode < 0:
+    #     print("Не верно, попробуй еще разок \n")
+    #     mode = int(input("Выберет режим, в котором хотите работать. \n  Введите 1, если хотите ввести данные в записную книжку." + 
+    #             " Введите 2, если хотите найти человека в записной книжке. Введите 0, если хотите выйти из прогграммы: "))
+    # else:
+    #     if mode == 1:
+    #         input_data(database_filename)
+    #         mode_selection()
+    #     elif mode == 2:
+    #         output_data(database_filename)
+    #         mode_selection()
+    #     elif mode == 0:
+    #         print("До встречи!")
 
   
 mode_selection()
